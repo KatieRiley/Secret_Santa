@@ -10,7 +10,7 @@ class RandomPicker
   end
 
   def add_person (name, phone_num, spouse, random_person)
-    people_array.insert(people_array.size - 1, Person.new(name, phone_num, spouse, random_person))
+    people_array.insert(people_array.size, Person.new(name, phone_num, spouse, random_person))
   end
 
   def match_up
@@ -22,20 +22,18 @@ class RandomPicker
     people_size = people_array.size
     random_array = randomize_array(people_size - 1)
     index = 0
-    puts random_array.size
     people_array.each do |person|
-      #people_array[index].their_secret_person = people_array[(random_array[index]).to_i].name
-      #puts (random_array[index]).to_i
-      #people_array[(random_array[index]).to_i].name
       secret_index = (random_array[index]).to_i
       person.their_secret_person = people_array[secret_index].name
       index = index + 1
     end
+    puts "Before we check for matching names:"
     people_array.each do |person|
       puts "Name: #{person.name} | Their secret person: #{person.their_secret_person}"
     end
     check_for_same_person
     puts "-----------------------------------"
+    puts "After we check for matching names:"
     people_array.each do |person|
       puts "Name: #{person.name} | Their secret person: #{person.their_secret_person}"
     end
