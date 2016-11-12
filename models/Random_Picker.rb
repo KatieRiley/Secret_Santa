@@ -43,19 +43,19 @@ class RandomPicker
     index = 0
     people_array.each do |person|
       if (person.name == person.their_secret_person) || (person.spouse_name == person.their_secret_person)
-        #if its the first element in the array swap with last element in the array
+        #if its the last element in the array swap with first element in the array
         #then recursivly call itself
-        if index == 0
+        if index == people_array.size - 1
           container = person.their_secret_person
-          person.their_secret_person = people_array[people_array.size - 1].their_secret_person
-          people_array[people_array.size - 1].their_secret_person = container
-        #otherwise swap with the element to the left
+          person.their_secret_person = people_array[0].their_secret_person
+          people_array[0].their_secret_person = container
+          check_for_same_person
+        #otherwise swap with the element to the right
         else
           container = person.their_secret_person
-          person.their_secret_person = people_array[index - 1].their_secret_person
-          people_array[index - 1].their_secret_person = container
+          person.their_secret_person = people_array[index + 1].their_secret_person
+          people_array[index + 1].their_secret_person = container
         end
-        check_for_same_person
       end
       index = index + 1
     end
