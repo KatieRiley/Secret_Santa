@@ -27,16 +27,6 @@ class RandomPicker
       person.their_secret_person = people_array[secret_index].name
       index = index + 1
     end
-    puts "Before we check for matching names:"
-    people_array.each do |person|
-      puts "Name: #{person.name} | Their secret person: #{person.their_secret_person}"
-    end
-    check_for_same_person
-    puts "-----------------------------------"
-    puts "After we check for matching names:"
-    people_array.each do |person|
-      puts "Name: #{person.name} | Their secret person: #{person.their_secret_person}"
-    end
   end
 
   def check_for_same_person
@@ -61,6 +51,9 @@ class RandomPicker
     end
   end
 
+  #puts the numbers from 0 to array_lenght - 1 (because we used .. not ...)
+  #into an array, then shuffles the array to randomize it, this way we dont
+  #end up with repets of the same number
   def randomize_array(array_length)
     (0..array_length).to_a.shuffle
   end
